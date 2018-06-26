@@ -40,7 +40,7 @@ class JiraBot(Resource):
 
         if issues_in_progress:
             for issue in issues_in_progress:
-                jira.transition_card(issue, d['target'])
+                jira.transition_issue(issue, d['target'])
 
 
 class Warmer(Resource):
