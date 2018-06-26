@@ -33,7 +33,7 @@ class JiraBot(Resource):
         )
 
         issues_in_progress = jira.search_issues(
-            'project={0} and assignee=currentuser() and status={1}'.format(
+            'project={0} and assignee=currentuser() and status="{1}"'.format(
                 d['proj_id'], d['origin']
             )
         )
