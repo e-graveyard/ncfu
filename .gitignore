@@ -1,2 +1,9 @@
+# Python
+
 *.pyc
 .mypy_cache/
+
+# JavaScript
+
+.tern-*
+as/*.json
