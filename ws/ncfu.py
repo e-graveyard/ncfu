@@ -44,7 +44,7 @@ class JiraBot(Resource):
             if issues_in_progress:
                 for issue in issues_in_progress:
                     left_behind.append({
-                        'id': issue.key,
+                        'key': issue.key,
                         'title': issue.fields.summary
                     })
                     jira.transition_issue(issue, d['target'])
