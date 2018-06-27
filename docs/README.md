@@ -24,7 +24,15 @@ you'll be quickly prompted to "pay". And the payment is made with candies.
 This work of genius was made so I never ever have to pay anymore (*wink wink*).
 
 
-## The web service
+## Structure
+
+There's two directories that matters in this repository:
+
+ - `as`: (Apps Script) The Google Apps Script "cron job".
+ - `ws`: (Web Service) The Flask web service that deals with Jira.
+
+
+### The web service
 
 This is the heart of the operation. It's a Flask application that connects to
 Jira, searches for occurrences of forgotten issues and do the transitions
@@ -32,7 +40,7 @@ between states. It was "designed" for Heroku, though you can easily hack around
 and made it compatible with AWS Lambda and such.
 
 
-## The "cron job"
+### The "cron job"
 
 This is what fires the Flask application and ensures the service is always warm
 and ready-to-go. It uses Google Apps Script for three simple reasons: Apps
