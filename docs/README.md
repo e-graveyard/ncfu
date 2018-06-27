@@ -4,10 +4,10 @@
 
 ## About
 
-`ncfu` (No Candy For U) is a tiny service composed by two web services: a live
-application that sits on Heroku and a "cron job"-like script on Google Apps
-Script. It can automatically move Jira issues from one status to another (i.e.,
-without human interaction), saving you some pennies.
+`ncfu` **(No Candy For U)** is a tiny service composed by two web services: a
+live application that sits on Heroku and a "cron job"-like script on Google
+Apps Script. It can automatically move Jira issues from one status to another
+(i.e., without human interaction), saving you some pennies.
 
 Though it was write for Jira in mind, it can be easily ported to deal with
 Trello and other project management applications.
@@ -19,7 +19,7 @@ At work, we have an "internal practice" that consists in paying with candies
 and other delies whenever someone forgets to change the status of an issue
 inside Jira. Say, if you're working on something, stops and forgets to change
 the status of that something (from "in progress" to "todo" or even "done"),
-you'll be quickly prompted to "pay". And the payment is made with candies.
+you'll be quickly prompted to "pay". **And the payment is made with candies.**
 
 This work of genius was made so I never ever have to pay anymore (*wink wink*).
 
@@ -28,8 +28,8 @@ This work of genius was made so I never ever have to pay anymore (*wink wink*).
 
 There's two directories that matters in this repository:
 
- - `as`: (Apps Script) The Google Apps Script "cron job".
- - `ws`: (Web Service) The Flask web service that deals with Jira.
+ - `as`: **(Apps Script)** The Google Apps Script "cron job".
+ - `ws`: **(Web Service)** The Flask web service that deals with Jira.
 
 
 ### The web service
@@ -52,4 +52,4 @@ application... more or less like a cron job).
 
 ## Usage
 
-I know you're reading, Marcio. No no no...
+I know you're reading, Marcio. **No no no...**
