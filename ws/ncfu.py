@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import traceback
 from os import environ
 
 from flask import Flask
@@ -26,26 +27,47 @@ class JiraBot(Resource):
         )
 
     def get(self):
-        d = self.fetch_env()
+        try:
+            d = self.fetch_env()
 
-        jira = self.make_conn(
-            d['svr'], d['user'], d['pasw']
-        )
-
-        issues_in_progress = jira.search_issues(
-            'project={0} and assignee=currentuser() and status="{1}"'.format(
-                d['proj_id'], d['origin']
+            jira = self.make_conn(
+                d['svr'], d['user'], d['pasw']
             )
-        )
 
-        if issues_in_progress:
-            for issue in issues_in_progress:
-                jira.transition_issue(issue, d['target'])
+            issues_in_progress = jira.search_issues(
+                'project={0} and assignee=currentuser() and status="{1}"'.format(
+                    d['proj_id'], d['origin']
+                )
+            )
+
+            left_behind = []
+            if issues_in_progress:
+                for issue in issues_in_progress:
+                    left_behind.append({
+                        'id': issue.key,
+                        'title': issue.fields.summary
+                    })
+                    jira.transition_issue(issue, d['target'])
+
+                return {
+                    'forgot': 1,
+                    'leftBehind': left_behind
+                }, 200
+
+            else:
+                return {
+                    'forgot': 0
+                }, 200
+
+        except Exception:
+            return {
+                'traceback': traceback.format_exc()
+            }, 500
 
 
 class Warmer(Resource):
     def get(self):
-        return 'pong'
+        return 'pong', 200
 
 
 app = Flask(__name__)
