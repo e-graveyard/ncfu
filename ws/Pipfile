@@ -8,7 +8,6 @@ jira = "*"
 flask = "*"
 flask-restful = "*"
 gunicorn = "*"
-requests = "*"
 
 [dev-packages]
 
